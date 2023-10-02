@@ -1,33 +1,70 @@
-# Project
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sparsemixer) 
+![GitHub](https://img.shields.io/github/license/microsoft/sparsemixer) 
+[![Maintenance](https://img.shields.io/badge/doc-yes-success.svg)](https://microsoft.github.io/sparsemixer/) 
+![PyPI](https://img.shields.io/pypi/v/sparsemixer) 
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+<h2 align="center">SparseMixer</h2>
+<h4 align="center">SparseBackpropagation for Mixture-of-Expert Training</h4>
 
-As the maintainer of this project, please make a few updates:
+<p align="center">
+  <a href="#st">Mixture-of-Expert</a> •
+  <a href="#sparsemixer">SparseMixer</a> •
+  <a href="#how-to-use">How to Use?</a> •
+  <a href="#examples">Examples</a> •
+  <a href="#citation">Citation</a> •
+  <a href="https://github.com/microsoft/sparsemixer/tree/main/LICENSE">License</a>
+</p>
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+[sparsemixer](https://arxiv.org/pdf/2304.08612.pdf), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
 
-## Contributing
+<h3 align="center" id="st"><i>What is Mixture-of-Expert</i></h4>
+The significant success of large-scale pre-training across various applications has underscored the imperative need for scalable models that are economically feasible. 
+Recent advances in sparsely activated networks, prominently known as Mixture-of-Experts (MoE), have attracted widespread interest. 
+Unlike traditional networks that densely activate all modules for all input, MoE selectively activates parts of modules to specific inputs through a process called {expert routing}, leading to notable efficiency enhancements.
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+Numerous methods have emerged to bridge discrete and back-propagation, and most of them are based on Straight-Through (ST). 
+Unfortunately, all existing ST estimators are incompatible with MoE, since they require activating all experts for gradient computing, thereby eliminating all the efficiency improvements of MoE. 
+Consequently, typical MoE training strategically neglects the gradient computation for routing, trading certain training signals for sparse computation. 
+Despite the scalability brought by sparse computation, this trade-off may result in slow convergence and improperly trained models.  
 
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+<h3 align="center" id="sparsemixer"><i>Backpropagation Made Sparse</i></h3>
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+We propose [sparsemixer](https://arxiv.org/pdf/2304.08612.pdf), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
+Grounded in a numerical ODE framework, SparseMixer harnesses the mid-point method, a second-order ODE solver, to deliver precise gradient approximations with negligible computational overhead. 
+Applying SparseMixer to Switch Transformer on both pre-training and machine translation tasks, SparseMixer showcases considerable performance gain, accelerating training convergence up to 2 times
 
-## Trademarks
+### How to use?
 
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.
+`sparsemixer` can be installed via `pip`
+```
+pip install sparsemixer
+```
+
+### Examples
+
+Please check the `example` folder for a working example. 
+
+### Citation
+Please cite the following papers if you found our model useful. Thanks!
+
+
+>Liyuan Liu, Jianfeng Gao, and Weizhu Chen (2023). Sparse Backpropagation for MoE Training. *ArXiv, abs/2304.08612*.
+```
+@inproceedings{liu2023bridging,
+  title={Sparse Backpropagation for MoE Training},
+  author = {Liu, Liyuan and Gao, Jianfeng and Chen, Weizhu},
+  booktitle = {arXiv:2304.08612 [cs]},
+  year={2023}
+}
+```
+
+>Liyuan Liu, Chengyu Dong, Xiaodong Liu, Bin Yu, and Jianfeng Gao (2023). Bridging Discrete and Backpropagation: Straight-Through and Beyond. *ArXiv, abs/2304.08612*.
+```
+@inproceedings{liu2023bridging,
+  title={Bridging Discrete and Backpropagation: Straight-Through and Beyond},
+  author = {Liu, Liyuan and Dong, Chengyu and Liu, Xiaodong and Yu, Bin and Gao, Jianfeng},
+  booktitle = {arXiv:2304.08612 [cs]},
+  year={2023}
+}
+```
