@@ -1,11 +1,8 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sparsemixer) 
 ![GitHub](https://img.shields.io/github/license/microsoft/sparsemixer) 
-[![Maintenance](https://img.shields.io/badge/doc-yes-success.svg)](https://microsoft.github.io/sparsemixer/) 
-![PyPI](https://img.shields.io/pypi/v/sparsemixer) 
 
 <h2 align="center">SparseMixer</h2>
-<h4 align="center">SparseBackpropagation for Mixture-of-Expert Training</h4>
+<h4 align="center">Sparse Backpropagation for Mixture-of-Expert Training</h4>
 
 <p align="center">
   <a href="#st">Mixture-of-Expert</a> •
