@@ -13,7 +13,7 @@
   <a href="https://github.com/microsoft/sparsemixer/tree/main/LICENSE">License</a>
 </p>
 
-[sparsemixer](https://arxiv.org/pdf/2304.08612.pdf), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
+[SparseMixer](https://arxiv.org/abs/2310.00811), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
 
 <h3 align="center" id="st"><i>What is Mixture-of-Expert</i></h4>
 The significant success of large-scale pre-training across various applications has underscored the imperative need for scalable models that are economically feasible. 
@@ -27,7 +27,7 @@ Despite the scalability brought by sparse computation, this trade-off may result
 
 <h3 align="center" id="sparsemixer"><i>Backpropagation Made Sparse</i></h3>
 
-We propose [sparsemixer](https://arxiv.org/pdf/2304.08612.pdf), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
+We propose [SparseMixer](https://arxiv.org/abs/2310.00811), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
 Grounded in a numerical ODE framework, SparseMixer harnesses the mid-point method, a second-order ODE solver, to deliver precise gradient approximations with negligible computational overhead. 
 Applying SparseMixer to Switch Transformer on both pre-training and machine translation tasks, SparseMixer showcases considerable performance gain, accelerating training convergence up to 2 times
 
@@ -46,12 +46,12 @@ Please check the `example` folder for a working example.
 Please cite the following papers if you found our model useful. Thanks!
 
 
->Liyuan Liu, Jianfeng Gao, and Weizhu Chen (2023). Sparse Backpropagation for MoE Training. *ArXiv, abs/2304.08612*.
+>Liyuan Liu, Jianfeng Gao, and Weizhu Chen (2023). Sparse Backpropagation for MoE Training. *ArXiv, abs/2310.00811*.
 ```
 @inproceedings{liu2023bridging,
   title={Sparse Backpropagation for MoE Training},
   author = {Liu, Liyuan and Gao, Jianfeng and Chen, Weizhu},
-  booktitle = {arXiv:2304.08612 [cs]},
+  booktitle = {arXiv:2310.00811 [cs]},
   year={2023}
 }
 ```
