@@ -15,6 +15,8 @@
 
 [SparseMixer](https://arxiv.org/abs/2310.00811), a scalable gradient estimator, bridges the gap between backpropagation and sparse expert routing.
 
+This branch includes two more sparsemixer variants, SparseMixer-1st and SparseMixer-inf. SparseMixer-1st behaves more similar to the switch transformer and should be easier to adapt. SparseMixer-inf has a better gradient estimation for router gradients. 
+
 <h3 align="center" id="st"><i>What is Mixture-of-Expert</i></h4>
 The significant success of large-scale pre-training across various applications has underscored the imperative need for scalable models that are economically feasible. 
 Recent advances in sparsely activated networks, prominently known as Mixture-of-Experts (MoE), have attracted widespread interest. 
